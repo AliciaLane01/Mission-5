@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Movie Collection";
+}
+
+@model List<MovieResponse>
+
+<h1>Movie Collection</h1>
+<div>
+    <table class="table-bordered table-striped">
+        <thead class="font-weight-bold">
+            <tr>
+                <td style="padding-inline:10px">Category</td>
+                <td style="padding-inline:10px">Title</td>
+                <td style="padding-inline:10px">Year</td>
+                <td style="padding-inline:10px">Director</td>
+                <td style="padding-inline:10px">Rating</td>
+                <td style="padding-inline:10px">Edited</td>
+                <td style="padding-inline:10px; width:100px">Lent To</td>
+                <td style="padding-inline:10px">Notes</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td style="padding-inline:10px">@movie.Category.CategoryName</td>
+                    <td style="padding-inline:10px; width:400px">@movie.Title</td>
+                    <td style="padding-inline:10px">@movie.Year</td>
+                    <td style="padding-inline:10px; width: 300px">@movie.Director</td>
+                    <td style="padding-inline:10px">@movie.Rating</td>
+                    <td style="padding-inline:10px">@movie.Edited</td>
+                    <td style="padding-inline:10px">@movie.Lentto</td>
+                    <td style="padding-inline:10px">@movie.Notes</td>
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@movie.MovieID" style="padding-inline:20px">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@movie.MovieID" style="padding-inline:20px">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Add Movie";
+}
+
+@model MovieResponse
+
+<div class="text-center">
+    <h1>Add a Movie to My Collection</h1>
+
+    <form method="post">
+        <div asp-validation-summary="All" style="padding:0"></div>
+        <label style="width:100px" asp-for="CategoryID">Category</label>
+        <select style="width:195px" asp-for="CategoryID">
+            <option value="">Select One</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryID">@c.CategoryName</option>
+            }
+        </select>
+        <br />
+        <label style="width:100px" asp-for="Title">Title</label>
+        <input type="text" asp-for="Title" />
+        <br />
+        <label style="width:100px" asp-for="Year">Year</label>
+        <input type="text" asp-for="Year" />
+        <br />
+        <label style="width:100px" asp-for="Director">Director</label>
+        <input type="text" asp-for="Director" />
+        <br />
+        <label style="width:100px" asp-for="Rating">Rating</label>
+        <select style="width:195px" asp-for="Rating">
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+        <br />
+        <label style="width:100px" asp-for="Edited">Edited</label>
+        <select style="width:195px" asp-for="Edited">
+            <option value="">Select One</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <br />
+        <label style="width:100px" asp-for="Lentto">Lent To</label>
+        <input type="text" asp-for="Lentto" />
+        <br />
+        <label style="width:100px" asp-for="Notes">Notes</label>
+        <input type="text" asp-for="Notes" />
+        <br />
+        <button type="submit">Add Movie</button>
+    </form>
+</div>
